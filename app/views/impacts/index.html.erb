@@ -1,0 +1,33 @@
+<h1>Listing impacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Detail</th>
+      <th>Food</th>
+      <th>Source code</th>
+      <th>Destination code</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @impacts.each do |impact| %>
+      <tr>
+        <td><%= impact.detail %></td>
+        <td><%= impact.food_id %></td>
+        <td><%= impact.source_code %></td>
+        <td><%= impact.destination_code %></td>
+        <td><%= link_to 'Show', impact %></td>
+        <td><%= link_to 'Edit', edit_impact_path(impact) %></td>
+        <td><%= link_to 'Destroy', impact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Impact', new_impact_path %>

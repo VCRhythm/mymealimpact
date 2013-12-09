@@ -1,0 +1,33 @@
+<%= form_for(@impact) do |f| %>
+  <% if @impact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@impact.errors.count, "error") %> prohibited this impact from being saved:</h2>
+
+      <ul>
+      <% @impact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :detail %><br>
+    <%= f.text_area :detail %>
+  </div>
+  <div class="field">
+    <%= f.label :food_id %><br>
+    <%= f.number_field :food_id %>
+  </div>
+  <div class="field">
+    <%= f.label :source_code %><br>
+    <%= f.text_field :source_code %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_code %><br>
+    <%= f.text_field :destination_code %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>myMealImpact</h1>
+<% flash.each do |name, msg| %>
+	<%= content_tag :div, msg, class: name %>
+<% end %>
+<%= form_tag("impacts/search", method: "get", role:"form" ) do %>
+	<div class="form-group">
+		<%= label_tag(:impact_food_id, "Food Name:", html_options={class:"control-label"}) %>
+		<%= collection_select(:impact, :food_id, Food.all, :id, :name, options ={}, html_options= {class:"form-control"}) %>
+	</div>
+	<div class="form-group">
+		<%= label_tag(:destination_id, "Location Consumed:") %>
+		<%= country_select("impact", "destination_code", [@local_country], options={iso_codes: "true"}, html_options={class:"form-control"}) %>	
+	</div>
+	<div class="form-group">
+		<%= label_tag(:source_id, "Source:") %>
+		<%= country_select("impact", "source_code", [@local_country], options={iso_codes:"true"}, html_options={class:"form-control"}) %>	
+	</div>
+	<%= submit_tag "Submit", class: "btn btn-default" %>
+<% end %>
